@@ -1,0 +1,439 @@
+Git
+
+https://www.youtube.com/watch?v=C18qzn7j4SM&list=PLQCmSnNFVYnRdgxOC_ufH58NxlmM6VYd1
+
+Recomendação - use um Unix para acompanhar melhor. Caso não use crie uma máquina virtual com o Linux Mint 20.1.
+
+Funções:
+- Backup na nuvem/armazenamento
+- Trabalho em grupo
+- Versionamento de arquivos
+- Histórico do projeto
+- 
+
+Instalação
+
+sudo apt install git
+
+Usando o git localmente
+
+mkdir git
+cd git
+
+git init
+
+sudo apt install tree
+
+tree .git
+
+Remover
+
+rm -rf .git
+
+git init
+
+echo a > a.txt
+
+echo b > b.txt
+
+git add . (ou git add --a)
+
+git commit -m 'a.txt e b.txt'
+
+Verificar o que foi adicionado
+
+git status - mostra arquivos adicionados mas não comitados
+
+tree .git
+
+git log - mostra a lista de commits realizados
+
+Novo commit
+
+echo c > c.txt
+
+git add c.txt
+
+git status
+
+git commit -m "c.txt"
+
+git status
+
+git log
+
+Alterar um arquivo
+
+echo c2 > c.txt
+
+git status
+
+Podemos desfazer as alterações com
+git restore c.txt (com isso ele restaura o conteúdo anterior a mudança atual)
+
+ou comitá-las
+
+git add .
+
+git status
+
+git log
+
+Mudando apenas o nome de um arquivo
+
+mv c.txt c2.txt
+
+git status
+
+git add .
+
+git status
+
+git commit -m 'c.txt para c2.txt'
+
+git status
+
+git log
+
+git log --oneline
+
+
+
+Branch - é uma nova linha de desenvolvimento deixando a atual intacta
+https://www.youtube.com/watch?v=_Mir2_YlA0g&list=PLQCmSnNFVYnRdgxOC_ufH58NxlmM6VYd1&index=2
+
+Verificar branchs existentes
+
+git branch
+
+O master é o branch padrão do git
+
+Criar novo branch
+
+git branch nome
+
+git branch feature1
+
+git branch
+
+No git um branch é apenas uma referência para um commit
+
+git log --oneline --decorate - traz as informações sobre os branchs e sobre o head
+
+head indica onde estamos
+
+cat .git/HEAD
+
+ref: refs/head//master
+
+
+Trocar de branch com checkout
+
+git checkout feature1
+
+Agora, tudo que fizermos vai para o branch feature1 e não para o master
+
+cat .git/HEAD
+
+ref: refs/head//feaure1
+
+echo d > d.txt
+
+git add .
+
+git commit -m 'd.txt'
+
+git log --oneline --decorate
+
+ls -la
+
+git checkout master
+
+ls -la
+
+O d.txt está somente em feature1
+
+git log --oneline --decorate
+
+git log --oneline --decorate --all (para mostrar os demais branchs)
+
+Efetuar um merge entre master e feature1
+
+Estando no master
+
+git merge feature1
+
+fast-forward (não havia divergência e somente é possível quando não existem divergências entre os branchs)
+
+Agora todos os branchs estão no mesmo commit.
+
+Como o feature1 foi incorporado ao mestar, podemos remover o feature1
+
+git branch -d feature1
+
+git log --oneline --decorate --all
+
+Criar divergência entre branchs para ver como se resolve
+
+git branch feature2
+
+git checkout feature2 (ou git checkout -b feature2)
+
+git log --oneline --decorate --all
+
+Criar arquivos na nova branch
+
+echo e > e.txt
+
+git add .
+
+git commit -m 'e.txt'
+
+git checkout master
+
+echo f > f.txt
+
+git add .
+
+git commit -m 'f.txt'
+
+git log --oneline --decorate --all
+
+git log --oneline --decorate --all --graph
+
+Estando no master
+
+git merge feature2
+
+git log --oneline --decorate --all --graph
+
+Como a feature2 foi incorporada na master,então
+
+git branch -d feature2
+
+Criar novo branch
+
+git checkout -b feature3
+
+echo g2 > g.txt
+
+git add .
+
+git commit -m 'g.txt'
+
+git checkout master
+
+echo g1 > g.txt
+
+git add .
+
+git commit -m 'g.txt'
+
+git merge feature3
+
+git status
+
+Acusa conflito. Então editamos g.txt e deixamos apenas o que desejamos.
+
+E repetimos o commit.
+
+git add .
+
+git commit -m 'g.txt corrigido'
+
+git log --oneline --decorate --all --graph
+
+git branch -d feature3
+
+
+Stash
+https://www.youtube.com/watch?v=twNbUHFlwfE&list=PLQCmSnNFVYnRdgxOC_ufH58NxlmM6VYd1&index=3
+
+Stash é uma área onde é possível armazenar código sem a necessidade de realizar um commit, permitindo muduar de branch ou realizar outras operações de forma organizada.
+
+git branch feature4
+
+git checkout -b feature4
+
+echo h > h.txt
+
+git add .
+
+git status
+
+Caso desista desta oepração, podemos armazenar o h.txt para o stash
+
+git stash save "h.txt" (este "h.txt" é apenas um identificador e não o arquivo)
+
+git status
+
+git stash list
+
+git stash apply stash@{0} - trazer de volta
+
+git stash list
+
+git stash drop stash@{0} - remover
+
+git stash save "h.txt"
+
+git stash pop - desempilhar
+
+git stash list
+
+git stash save "h.txt"
+
+git stash branch feature5 - criar branch
+
+
+Push - empurar. Enviar para o repositório remoto atualizando-o em relação ao repositório local.
+
+Criar repositório remoto
+
+git remote add origin https://github.com/ribafs/gitremoto
+
+git remote
+
+ou
+
+git remote -v
+
+gti push origin master
+
+
+Pull - puxar do repositório remoto para o repositorio local, atualizando-o
+pull = fetch + merge
+
+git pull origin master
+
+
+Git clone - baixar um repositório remoto para uso local
+
+git clone https://github.com/ribafs/gitremoto git2
+
+cd git2
+
+echo h > h.txt
+
+git add .
+
+git commit -m 'h.txt'
+
+git push origin master
+
+cd git
+
+git log --oneline --decorate --all --graph
+
+git pull origin master
+
+cd git2
+
+echo i > i.txt
+
+git add .
+
+git commit -m 'i.txt'
+
+git push origin master
+
+cd git
+
+git fetch - traz do repositório remoto as alterações existentes, mas não faz o merge
+
+git log --oneline --decorate --all --graph
+
+Ver diferenças entre master e origin - diff
+
+git diff master origin/master
+
+Então efetuar um merge, estando no master
+
+git merge origin/master
+
+git log --oneline --decorate --all --graph
+
+
+Reset - desfazer coisas
+
+echo k > k.txt
+
+git status
+
+git add .
+
+git status
+
+git commit -m 'k.txt'
+
+git status
+
+Tem como desfazer este commit?
+
+git log --oneline --decorate --all --graph
+
+git reset referenciaCommit
+
+Exsitem 3 formas de efetuar o reset: soft, mixed e hard
+
+git status
+
+git reset --spft a4b1 (basicamente somente altera a referência do master)
+
+git commit -m 'k.txt'
+
+git log --oneline --decorate --all --graph
+
+git reset --mixed 14b1 ou apenas (git reset a4b1, pois este é o default)
+
+git log --oneline --decorate --all --graph
+
+git status
+
+Este reset também exclui o arquivo commitado. Bom para o caso de não querer comitar mais este arquivo, mas outros.
+
+git add .
+
+git commit -m 'k.txt'
+
+git log --oneline --decorate --all --graph
+
+git status
+
+git reset --hart a4b1
+
+git log --oneline --decorate --all --graph
+
+git status
+
+git reset reflete exatamente o estado anterior.
+
+Como desfazer um reset?
+
+git reflog
+
+git reset --hard aec0   
+
+git status
+
+ls -la
+
+push origin master
+
+Podemos desfazer um commit após ter feito um push?
+
+git log --oneline --decorate --all --graph
+
+git reset --hart a4b1
+
+push origin master
+
+Não deu
+
+Então execute (mas antes combine isso com a equipe)
+
+push origin master -f (ou --force)
+
+Isso poderá afetar os outros integrantes da equipe.
+
+
