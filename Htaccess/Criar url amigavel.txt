@@ -1,4 +1,4 @@
-Criar url amigavel usando desse jeito
+Criar url amigavel
  
 
 index.php

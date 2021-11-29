@@ -5,7 +5,7 @@ RewriteCond %{SCRIPT_FILENAME} !-d
 RewriteRule ^(.*)$ index.php?url=$1
 
 # Tratar as variáveis após a barra/
-# http://ribafs.org/controller/action/param1/param2/param3
+# http://ribamar.net.br/controller/action/param1/param2/param3
 
 -------------
 errorDocument 400 http://www.youwebsite.com/404.html

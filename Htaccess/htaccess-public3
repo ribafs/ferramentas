@@ -1,3 +1,5 @@
+# Redirecionar para a pasta public/
+
 Options -Indexes -MultiViews
 
 RewriteEngine On

@@ -1,3 +1,5 @@
+# Redirecionar para o index.php neste diretório
+
 RewriteEngine On
 
 RewriteCond %{REQUEST_FILENAME} !-d
