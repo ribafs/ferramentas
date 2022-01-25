@@ -1,7 +1,19 @@
 # Extensão para Copiar Texto de Vídeo
 
+Recebi esta dica em um grupo do Facebook, PHP Brasil acho. Como parece algo útil venho compartilhar.
+
+Algumas vezes estamos acompanhando uma vídeo áula sobre um assunto e nosso código não fecha e vemos o professor executar sem erro. Já aconteceu comigo algumas vezes, por isso valorizo mais um curso que ofereça também o código em um repositório. Para aqueles que não oferecem agora nosso amigo nos brindou com esta extensão, a quem deixo aqui minha gratidão.
+
 Com esta extensão para Firefox ou Chrome podemos copiar texto de vídeos do Youtube.
 Bem útil para o caso de vídeo aulas e outros vídeos.
+
+Encontrei um post do autor no Reddit anunciando a criação da extensão:
+https://www.reddit.com/r/learnprogramming/comments/m5z3qu/i_made_a_chrome_extension_that_lets_you_copy_text/
+
+"I was frustrated having to type out code and links from coding tutorials on Youtube, so I made a chrome extension that lets you copy text directly from the video!
+Thought it could be useful to some of you, so am sharing it here. It's totally free."
+
+https://selectext.app/
 
 Chrome
 
