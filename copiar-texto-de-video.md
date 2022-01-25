@@ -1,6 +1,6 @@
 # Extensão para Copiar Texto de Vídeo
 
-Recebi esta dica em um grupo do Facebook, PHP Brasil acho. Como parece algo útil venho compartilhar.
+Recebi esta dica em um grupo do Facebook, PHP Brasil acho. Como parece algo útil venho compartilhar por aqui para que facilmente possa alcançar mais gente.
 
 Algumas vezes estamos acompanhando uma vídeo áula sobre um assunto e nosso código não fecha e vemos o professor executar sem erro. Já aconteceu comigo algumas vezes, por isso valorizo mais um curso que ofereça também o código em um repositório. Para aqueles que não oferecem agora nosso amigo nos brindou com esta extensão, a quem deixo aqui minha gratidão.
 
